@@ -168,7 +168,7 @@ class OoyalaApi
         $queryParams = array()
     ) {
         if(empty($requestBody)) {
-            $requestBody = "";
+            $requestBody = json_encode("");
         } else {
             $requestBody = json_encode($requestBody);
         }
@@ -189,7 +189,7 @@ class OoyalaApi
         $queryParams = array()
     ) {
         if(empty($requestBody)) {
-            $requestBody = "";
+            $requestBody = json_encode("");
         } else {
             $requestBody = json_encode($requestBody);
         }
@@ -210,7 +210,7 @@ class OoyalaApi
         $queryParams = array()
     ) {
         if(empty($requestBody)) {
-            $requestBody = "";
+            $requestBody = json_encode("");
         } else {
             $requestBody = json_encode($requestBody);
         }
