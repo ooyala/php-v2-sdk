@@ -435,7 +435,7 @@ class OoyalaHttpRequest
         }
 
         $error = "HTTP Error ($httpCode), Response: $response.";
-        throw new OoyalaRequestErrorException($error);
+        throw new OoyalaRequestErrorException($error, $httpCode, $headers, $response);
     }
 
     private function applyOptions($options)
@@ -462,4 +462,79 @@ class OoyalaHttpRequest
 }
 
 class OoyalaMethodNotSupportedException extends Exception {}
-class OoyalaRequestErrorException extends Exception {}
+
+class OoyalaRequestErrorException extends Exception
+{
+    /**
+     * Holds the HTTP response code.
+     *
+     * @var int
+     */
+    private $httpCode;
+
+    /**
+     * Holds the headers from the response.
+     *
+     * @var array
+     */
+    private $headers;
+
+    /**
+     * Holds the content of the response's body.
+     *
+     * @var string
+     */
+    private $body;
+
+    /**
+     * Constructor. Takes the secret and api keys.
+     *
+     * Examples:
+     * $ooyalaApi = new OoyalaApi('7ab06', '329b5');
+     * $ooyalaApi = new OoyalaApi('7ab06', '329b5', array(
+     *     'baseUrl' => 'https://api.ooyala.com',
+     *     'expirationWindow' => 20));
+     *
+     * @param string $message  The exception message.
+     * @param int    $httpCode HTTP response code.
+     * @param array  $headers  The headers included in the response.
+     * @param string $body     The body of the response.
+     */
+    function __construct($message, $httpCode = null, array $headers = array(), $body = null)
+    {
+        parent::__construct($message);
+        $this->httpCode = $httpCode;
+        $this->headers = $headers;
+        $this->body = $body;
+    }
+
+    /**
+     * Get the HTTP response code
+     *
+     * @return int
+     */
+    public function getHttpCode()
+    {
+        return $this->httpCode;
+    }
+
+    /**
+     * Get the HTTP response headers.
+     *
+     * @return array
+     */
+    public function getHeaders()
+    {
+        return $this->headers;
+    }
+
+    /**
+     * Get the response body
+     *
+     * @return string
+     */
+    public function getBody()
+    {
+        return $this->body;
+    }
+}
