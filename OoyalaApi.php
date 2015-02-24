@@ -46,7 +46,7 @@
 
 define('OOYALA_API_DEFAULT_CACHE_BASE_URL', 'http://cdn-api.ooyala.com');
 define('OOYALA_API_DEFAULT_BASE_URL', 'https://api.ooyala.com');
-define('OOYALA_API_DEFAULT_EXPIRATION_WINDOW', 15);
+define('OOYALA_API_DEFAULT_EXPIRATION_WINDOW', 60*60*24);
 define('OOYALA_API_ROUND_UP_TIME', 300);
 
 /**
