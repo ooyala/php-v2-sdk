@@ -223,7 +223,6 @@ class OoyalaApi
      * @param string $requestPath The path of the resource from the request.
      * @param array  $queryParams The associative array with GET parameters.
      *                            Defaults to array().
-     * @param string $requestBody The POST data to send. Defaults to "".
      * @return string the response body.
      * @throws OoyalaRequestErrorException if an error occurs.
      */
@@ -304,8 +303,10 @@ class OoyalaApi
     public function sendRequest($httpMethod, $requestPath,
         $queryParams = array(), $requestBody = ''
     ) {
-        if(substr($requestPath, 0, 4) != '/v2/')
+        $versionInfo = substr($requestPath, 0, 4);
+        if($versionInfo != '/v2/' && $versionInfo != '/v3/') {
             $requestPath = '/v2/' . $requestPath;
+        }
         $httpMethod = strtoupper($httpMethod);
         if(!in_array($httpMethod, self::$supportedMethods)) {
             throw new OoyalaMethodNotSupportedException('Method not supported '
