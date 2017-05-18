@@ -2,6 +2,7 @@
     "name": "ooyala/v2-api",
     "description": "Ooyala's V2 API PHP SDK",
     "license": "proprietary",
+    "homepage": "http://help.ooyala.com/video-platform/concepts/api_sdks.html",
     "autoload": {
         "files": ["OoyalaApi.php"]
     },

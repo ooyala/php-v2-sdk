@@ -2,6 +2,8 @@
 
 The PHP SDK is a client class for our V2 API.
 
+2017-05-18 - TAG created "v2.0"
+
 ## Requirements
 
 This SDK uses cURL. So, in order to get it running, you need to have the
